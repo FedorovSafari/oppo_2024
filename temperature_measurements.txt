@@ -1,0 +1,44 @@
+TemperatureMeasurements: 
+Дата: 2019.04.17 Место: London Температура: 33,66 °C
+TemperatureMeasurements: 
+Дата: 2020.01.10 Место: California Температура: -27,11 °C
+TemperatureMeasurements: 
+Дата: 2021.12.11 Место: Paris Температура: 1,77 °C
+TemperatureMeasurements: 
+Дата: 2100.13.43 Место: Mars Температура: -110,336 °C
+TemperatureMeasurements: 
+Дата: 2019.04.17 Место: London Температура: 33,66 °C
+TemperatureMeasurements: 
+Дата: 2020.01.10 Место: California Температура: -27,11 °C
+TemperatureMeasurements: 
+Дата: 2021.12.11 Место: Paris Температура: 1,77 °C
+TemperatureMeasurements: 
+Дата: 2019.04.17 Место: London Температура: 33,66 °C
+TemperatureMeasurements: 
+Дата: 2020.01.10 Место: California Температура: -27,11 °C
+TemperatureMeasurements: 
+Дата: 2021.12.11 Место: Paris Температура: 1,77 °C
+TemperatureMeasurements: 
+Дата: 2100.13.43 Место: Mars Температура: -110,336 °C
+TemperatureMeasurements: 
+Дата: 3204.01.01 Место: Saturn Температура: -1 000,56 °C
+TemperatureMeasurements: 
+Дата: 2020.01.10 Место: California Температура: -27,11 °C
+TemperatureMeasurements: 
+Дата: 2021.12.11 Место: Paris Температура: 1,77 °C
+TemperatureMeasurements: 
+Дата: 2100.13.43 Место: Mars Температура: -110,336 °C
+TemperatureMeasurements: 
+Дата: 3204.01.01 Место: Saturn Температура: -1 000,56 °C
+TemperatureMeasurements: 
+Дата: 2019.04.17 Место: 'London' Температура: 33,66 °C
+TemperatureMeasurements: 
+Дата: 2019.04.17 Место: 'London' Температура: 33,66 °C
+TemperatureMeasurements: 
+Дата: 2020.01.10 Место: 'California' Температура: -27,11 °C
+TemperatureMeasurements: 
+Дата: 2021.12.11 Место: 'Paris' Температура: 1,77 °C
+TemperatureMeasurements: 
+Дата: 2100.13.43 Место: 'Mars' Температура: -110,336 °C
+TemperatureMeasurements: 
+Дата: 3204.01.01 Место: 'Saturn' Температура: -1 000,56 °C

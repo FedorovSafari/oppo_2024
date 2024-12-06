@@ -1,52 +1,85 @@
 ﻿#include <iostream>
 #include <string>
 #include <regex>
+#include <fstream>
+#include <stdexcept>
+
+
 
 using namespace std;
 
-// Структура для хранения информации о температурных измерениях
-struct TemperatureMeasurements {
-    string date;
+struct TemperatureMeasurements {   // хранение информации об объекте
+    string data;
     string place;
-    float temperature;
+    float temp;
 
     void print() const {
-        setlocale(LC_ALL, "RU");
+
         cout << "TemperatureMeasurements: \n";
-        cout << "Дата: " << date << " ";
+        cout << "Дата: " << data << " ";
         cout << "Место: " << place << " ";
-        cout << "Температура: " << temperature << " °C\n";
+        cout << "Температура: " << temp << " °C\n";
+    }
+
+    void saveToFile(const string& filename) const {
+        ofstream outFile(filename, ios::app);
+        if (outFile.is_open()) {
+            outFile << "TemperatureMeasurements: \n";
+            outFile << "Дата: " << data << " ";
+            outFile << "Место: " << place << " ";
+            outFile << "Температура: " << temp << " °C\n";
+            outFile.close();
+        }
+        else {
+            cerr << "Ошибка: Не удалось открыть файл для записи.\n";
+        }
     }
 };
 
-// Функция для извлечения данных из строки
-bool extractData(const string& input, TemperatureMeasurements& measurements) {
-    regex pattern("([\\d]+[\\.][\\d]+[\\.][\\d\\n]+[^\\s])([\\s]+)([a-zA-Z]+)([\\s]+)([-+]?\[\\d.]+)");
+int main() {
+
+    locale::global(std::locale("Russian"));
+
+    // Массив строк для хранения входных данных
+    string inputs[] = {
+        "2019.04.17 'London' 33,66",
+        "2020.01.10 'California' -27,11",
+        "2021.12.11 'Paris' 1,77",
+        "2100.13.43 'Mars' -110,336",
+        "3204.01.01 'Saturn' -1000,56"
+    };
+
+    regex pattern("([\\d]+[\\.][\\d]+[\\.][\\d\\n]+[^\\s])([\\s]+)('[a-zA-Z]+')([\\s]+)([-+]?\[\\d,]+)");
     smatch match;
 
-    if (regex_match(input, match, pattern)) {
-        measurements.date = match[1];
-        measurements.place = match[3];
-        measurements.temperature = stof(match[5]);
-        return true;
-    }
-    return false;
-}
+    for (const string& input : inputs) {
+        // Проверяем, соответствует ли строка шаблону
+        if (regex_match(input, match, pattern)) {
+            string data = match[1];
+            string place = match[3];
+            float temp;
 
-// Функция для обработки входной строки и вывода результата
-void processInput(const string& input) {
-    TemperatureMeasurements measurements;
+            try {
+                temp = stof(match[5]);
+            }
+            catch (const invalid_argument& e) {
+                cerr << "Temperature conversion error: " << e.what() << "\n";
+                continue; // Пропускаем эту итерацию
+            }
+            catch (const out_of_range& e) {
+                cerr << "Error: temperature is out of the acceptable range: " << e.what() << "\n";
+                continue; // Пропускаем эту итерацию
+            }
 
-    if (extractData(input, measurements)) {
-        measurements.print();
-    }
-    else {
-        cerr << "Ошибка: Не тот формат строки.\n";
-    }
-}
+            TemperatureMeasurements obj{ data, place, temp };
 
-int main() {
-    string input = "2017.11.16 London -6.1";
-    processInput(input);
+            obj.print();
+            obj.saveToFile("temperature_measurements.txt");
+        }
+        else {
+            cerr << "Error: Wrong string format: " << input << "\n";
+        }
+    }
+
     return 0;
 }
